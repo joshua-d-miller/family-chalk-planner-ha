@@ -15,12 +15,19 @@ arch:
 image: ghcr.io/joshua-d-miller/family-chalk-planner
 startup: application
 boot: auto
-# its own port: the wall display, tablets and phones open http://<home assistant>:3002/
+# In Home Assistant's sidebar (Ingress): its people sign in with their Home Assistant login; its
+# admins are the board's admins. The board reads Home Assistant's calendars and to-do lists.
+ingress: true
+ingress_port: 3002
+panel_icon: mdi:calendar-heart
+panel_title: Family Board
+homeassistant_api: true
+# its own port, for a wall screen with nothing of Home Assistant around it: open
+# http://<home assistant>:3002/ there and pair it from the board's admin console
 ports:
   3002/tcp: 3002
-webui: http://[HOST]:[PORT:3002]/admin
 watchdog: http://[HOST]:[PORT:3002]/api/health
-# Configuration tab: one switch, for a family locked out of the admin console (see DOCS.md)
+# Configuration tab: one switch, to remove every paired screen and board account (see DOCS.md)
 options:
   reset_admin: false
 schema:
