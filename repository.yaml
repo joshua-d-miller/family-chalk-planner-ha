@@ -1,0 +1,6 @@
+# Family Chalk Planner for Home Assistant: the app repository Home Assistant reads.
+# The board itself lives in https://github.com/joshua-d-miller/family-chalk-planner; this repository
+# only says how Home Assistant runs its published image (family-chalk-planner/config.yaml).
+name: Family Chalk Planner
+url: https://github.com/joshua-d-miller/family-chalk-planner-ha
+maintainer: Joshua D. Miller (https://github.com/joshua-d-miller)

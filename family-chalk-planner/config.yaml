@@ -1,0 +1,35 @@
+# Family Chalk Planner as a Home Assistant app.
+#
+# Nothing is built here: Home Assistant pulls the same image every Docker install uses,
+# ghcr.io/joshua-d-miller/family-chalk-planner, at the tag in "version" below. That number is kept in
+# step with the board's newest release by .github/workflows/follow-releases.yaml, so a new release
+# shows up as "Update" in Settings → Apps.
+name: Family Chalk Planner
+version: "0.17.1"
+slug: family_chalk_planner
+description: A chalkboard-style family wall calendar for a wall screen, edited from a tablet
+url: https://github.com/joshua-d-miller/family-chalk-planner
+arch:
+  - amd64
+  - aarch64
+image: ghcr.io/joshua-d-miller/family-chalk-planner
+startup: application
+boot: auto
+# its own port: the wall display, tablets and phones open http://<home assistant>:3002/
+ports:
+  3002/tcp: 3002
+webui: http://[HOST]:[PORT:3002]/admin
+watchdog: http://[HOST]:[PORT:3002]/api/health
+# Configuration tab: one switch, for a family locked out of the admin console (see DOCS.md)
+options:
+  reset_admin: false
+schema:
+  reset_admin: bool
+environment:
+  # the board's Updates section says Home Assistant updates it (no update.sh here)
+  UPDATER: homeassistant
+# Everything the board keeps is in the app's /data folder, so Home Assistant's backups include it:
+# the database, the settings key, uploads and the nightly copies. The caches rebuild themselves.
+backup_exclude:
+  - "*clipart-cache*"
+  - "*photo-cache*"

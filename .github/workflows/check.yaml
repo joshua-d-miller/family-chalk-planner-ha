@@ -1,0 +1,32 @@
+name: Check
+# The app's files are what Home Assistant expects: the YAML loads, the keys it needs are there, and the
+# version is a plain number that matches a published image tag.
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: The app's configuration
+        run: |
+          python3 - <<'EOF'
+          import re, yaml
+          repo = yaml.safe_load(open('repository.yaml'))
+          assert repo.get('name'), 'repository.yaml needs a name'
+          c = yaml.safe_load(open('family-chalk-planner/config.yaml'))
+          for k in ('name', 'version', 'slug', 'description', 'arch', 'image'):
+              assert c.get(k), f'config.yaml needs {k}'
+          assert re.fullmatch(r'\d+\.\d+\.\d+', str(c['version'])), 'version must be like 0.17.1 (the image tag)'
+          assert set(c['arch']) <= {'amd64', 'aarch64'}, 'the board publishes amd64 and arm64 only'
+          for k in (c.get('options') or {}):
+              assert k in (c.get('schema') or {}), f'option {k} has no schema'
+          yaml.safe_load(open('family-chalk-planner/translations/en.yaml'))
+          print('ok:', c['name'], c['version'])
+          EOF
+      - name: The follow script
+        run: shellcheck .github/scripts/follow-release.sh

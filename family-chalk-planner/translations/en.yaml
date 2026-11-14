@@ -1,0 +1,9 @@
+configuration:
+  reset_admin:
+    name: Reset the admin
+    description: >-
+      Locked out of the admin console? Turn this on and restart the app: every account and paired
+      screen is removed (the calendar, drawings and settings stay) and the Log shows a new setup code.
+      Turn it off again afterwards.
+network:
+  3002/tcp: The board (wall display, tablets, phones and the admin console at /admin)

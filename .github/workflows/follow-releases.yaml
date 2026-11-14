@@ -1,0 +1,31 @@
+name: Follow the board's releases
+# Every few hours (and when the board's release workflow pings it), moves the app to the board's newest
+# release once its image is published: .github/scripts/follow-release.sh. Nothing is built here.
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+  repository_dispatch:
+    types: [board-released]
+permissions:
+  contents: write
+concurrency:
+  group: follow
+  cancel-in-progress: false
+jobs:
+  follow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Newest release
+        id: f
+        env:
+          # reading the board's releases needs no token once it's public; until then, a read-only token
+          GH_TOKEN: ${{ secrets.BOARD_READ_TOKEN || github.token }}
+        run: bash .github/scripts/follow-release.sh
+      - if: steps.f.outputs.changed == 'true'
+        name: Commit
+        run: |
+          git -c user.name="github-actions" -c user.email="github-actions@users.noreply.github.com" \
+            commit -qam "Family Chalk Planner ${{ steps.f.outputs.version }}"
+          git push -q
