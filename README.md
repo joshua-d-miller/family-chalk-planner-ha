@@ -7,7 +7,7 @@ a chalkboard-style family wall calendar, installed, updated and backed up by Hom
 
 ## Install
 
-1. Tap the button above, or in Home Assistant go to **Settings → Apps → Install app**, open the **⋮**
+1. Tap the button above, or in Home Assistant go to **Settings → Apps → App store** (bottom right), open the **⋮**
    menu → **Repositories**, and add `https://github.com/joshua-d-miller/family-chalk-planner-ha`.
 2. Find **Family Chalk Planner** in the app store, **Install**, then **Start**.
 3. Follow the app's **Documentation** tab (the same as [DOCS.md](family-chalk-planner/DOCS.md)).
