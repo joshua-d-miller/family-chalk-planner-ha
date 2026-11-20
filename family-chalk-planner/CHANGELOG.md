@@ -3,6 +3,23 @@
 The app runs the board's own releases; these are their notes, newest first. Every release is also on
 https://github.com/joshua-d-miller/family-chalk-planner/releases
 
+## 1.1.1
+
+## 1.1.1 — The wall moves to a new day by itself
+- **A new day, without a reload:** at midnight every screen now moves to the new day by itself: today's ring, Up
+  next, the countdowns, and a new month on the 1st. Before, a quiet wall could stay on yesterday until someone
+  reloaded it. A screen that was asleep (turned off overnight) also catches up as soon as it's on again.
+- **No more pull-to-refresh:** a swipe down on a wall or touch screen no longer reloads the board in Chrome-based
+  browsers. In Fully Kiosk, also turn off its own pull-to-refresh setting if it's on.
+- **A family screen where someone is also signed in** now opens the board ready to edit, with the cork or ☰ and
+  working month arrows. Before, it showed the wall's view-only board instead.
+- **The wall** no longer shows month arrows that do nothing.
+- **↻ Reload the board** in the ☰ menu (instead of pull-to-refresh).
+- **The ☰ button's drawer** is sized to the screen: it took about a third of a smaller wall screen.
+- **Tested the way Colby runs it:** Chrome in kiosk mode on Linux, on 1080p, 2K and 4K touch screens, on every change.
+
+Full notes: https://github.com/joshua-d-miller/family-chalk-planner/releases/tag/v1.1.1
+
 ## 1.1.0
 
 ## 1.1.0 — Countdowns, looks and big photo albums
