@@ -3,6 +3,19 @@
 The app runs the board's own releases; these are their notes, newest first. Every release is also on
 https://github.com/joshua-d-miller/family-chalk-planner/releases
 
+## 1.2.6
+
+## 1.2.6 — Art drawn on a layer of its own
+- **Fixed:** now and then, tiny blue or green dots could show up at the edges of clip art and words, mostly where
+  they sat on or near the calendar's lines, until the page was reloaded (seen on an Apolosign). The art was painted
+  in together with the calendar's lines and boxes, and on some screens a repaint of either left stray pixels there.
+  The art is now drawn on a layer of its own and laid over the calendar (or under its writing, for art put behind),
+  so neither is painted into the other. It's drawn at the screen's own resolution, as sharp as before; while zoomed
+  in to draw it's painted in again, so it's never a stretched copy.
+- 1.2.5's ⚙️ Settings → This screen → Drawing tests are gone: there's nothing to try out on the screen.
+
+Full notes: https://github.com/joshua-d-miller/family-chalk-planner/releases/tag/v1.2.6
+
 ## 1.2.3
 
 ## 1.2.3 — The ☰ button stays out of the slideshow, on every wall screen

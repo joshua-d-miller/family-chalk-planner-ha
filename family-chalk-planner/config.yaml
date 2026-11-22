@@ -5,7 +5,7 @@
 # step with the board's newest release by .github/workflows/follow-releases.yaml, so a new release
 # shows up as "Update" in Settings → Apps.
 name: Family Chalk Planner
-version: "1.2.3"
+version: "1.2.6"
 slug: family_chalk_planner
 description: A chalkboard-style family wall calendar for a wall screen, edited from a tablet
 url: https://github.com/joshua-d-miller/family-chalk-planner
