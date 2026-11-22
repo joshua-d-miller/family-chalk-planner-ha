@@ -3,6 +3,15 @@
 The app runs the board's own releases; these are their notes, newest first. Every release is also on
 https://github.com/joshua-d-miller/family-chalk-planner/releases
 
+## 1.2.3
+
+## 1.2.3 — The ☰ button stays out of the slideshow, on every wall screen
+- **Fixed:** 1.2.2's fix for the ☰ button over the slideshow's photos needed a newer browser than some wall screens
+  have (one older than Chrome 105, such as an older Android tablet's). The button and the tab bar now step aside for
+  the slideshow on every browser the board supports.
+
+Full notes: https://github.com/joshua-d-miller/family-chalk-planner/releases/tag/v1.2.3
+
 ## 1.1.1
 
 ## 1.1.1 — The wall moves to a new day by itself
