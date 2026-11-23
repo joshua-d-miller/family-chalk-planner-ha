@@ -3,6 +3,17 @@
 The app runs the board's own releases; these are their notes, newest first. Every release is also on
 https://github.com/joshua-d-miller/family-chalk-planner/releases
 
+## 1.2.7
+
+## 1.2.7 — No crash when the board's answer is cut short
+- **Fixed:** now and then a screen showed "A screen crashed" (seen in Firefox, on the board and while editing it),
+  saying `e.photos is undefined`. When the board's answer to a screen didn't come through whole (cut off while the
+  board restarted, say, or a page from something in between instead of the board's answer), the screen took it as
+  an empty answer, and the photos had nothing to count. Such an answer is now treated as one that didn't arrive:
+  the screen keeps what it already had and asks again on the next change, and the photos read safely either way.
+
+Full notes: https://github.com/joshua-d-miller/family-chalk-planner/releases/tag/v1.2.7
+
 ## 1.2.6
 
 ## 1.2.6 — Art drawn on a layer of its own
