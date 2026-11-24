@@ -3,6 +3,39 @@
 The app runs the board's own releases; these are their notes, newest first. Every release is also on
 https://github.com/joshua-d-miller/family-chalk-planner/releases
 
+## 1.2.8
+
+## 1.2.8 — Safer pictures, links and limits
+A security check-up, from GitHub's code scanning: nothing you do on the board changes.
+- **Fixed:** "Add from link" could be pointed at the board's own computer or your home network with an address
+  written the IPv6 way (`http://[::ffff:127.0.0.1]/`), which slipped past its private-network check. It's turned
+  away now, like every other private address.
+- **Safer:** every picture the board brings in from elsewhere (album photos, web pictures and their thumbnails,
+  animated emoji, pictures from a link or an upload) is drawn again as a new picture before it's kept, so
+  anything hidden in the original (a script, a second file tucked on the end, where a photo was taken) never
+  comes along. GIFs still move with their own colors (unchanged unless a frame shows more than 255, the most a
+  GIF frame holds), photos stay the right way up and as sharp as before (kept at quality 95 with full color
+  detail, at their own size), and an animated emoji's still picture is now a PNG in the size each screen shows it
+  (256 to 2048 pixels across): sharp even filling a 4K wall, and a small one never holds a big picture in a wall's
+  memory.
+- **Safer:** one check for every address the board fetches from (an Immich or calendar server, an album, and
+  what those answer with): plain web addresses only, never one with a password in it or one no real server has,
+  checked again where its name leads and on every redirect; the sign-in only goes on to the same server
+  (never to another port, never down from https to http; up to https only on the matching port). Your own network is still fine for Immich and calendars, and iCloud's own servers still work.
+- **Safer:** a limit on requests a minute, counted for each signed-in person, paired screen and Home Assistant
+  person (anyone else by address), so a stuck device can't wear the board down. Far above what a home's screens
+  use; sign-in and pairing keep their own, tighter limits.
+- **Safer:** files the board keeps are always inside their own folder and written in one step; odd names in a
+  board style, a month's look or a cookie are ignored (a style tweak named `__proto__` could make that request
+  fail); what a screen or a sign-in sends can't start a fake line in the server log, and a screen's crash
+  report still shows its steps one per line.
+- Docker's actions in the release workflow are pinned to exact versions.
+- **Note for a 32-bit Raspberry Pi OS:** keeping new pictures needs Bookworm or newer (the image library that redraws
+  them needs it). On an older one the board still starts and shows everything it has, but new pictures aren't kept
+  and the server log says why; the 64-bit Raspberry Pi OS, or Bookworm, fixes it (docs/install.md → Node.js).
+
+Full notes: https://github.com/joshua-d-miller/family-chalk-planner/releases/tag/v1.2.8
+
 ## 1.2.7
 
 ## 1.2.7 — No crash when the board's answer is cut short
